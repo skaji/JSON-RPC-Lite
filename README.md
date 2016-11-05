@@ -13,7 +13,7 @@ JSON::RPC::Lite - create JSON-RPC 2.0 application
     method 'sum' => sub {
       my $c = shift;
       my $params = $c->params;
-      return $c->res_invalid_params if res $params ne 'ARRAY';
+      return $c->res_invalid_params if ref $params ne 'ARRAY';
       my $sum = sum 0, @$params;
       my $res = $c->res;
       $res->result({sum => $sum});
