@@ -2,7 +2,7 @@
 
 # NAME
 
-JSON::RPC::Lite - create JSON-RPC 2.0 server
+JSON::RPC::Lite - create JSON-RPC 2.0 application
 
 # SYNOPSIS
 

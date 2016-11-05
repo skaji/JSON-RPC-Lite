@@ -7,7 +7,7 @@ use 5.008005;
 use ExtUtils::MakeMaker;
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "create JSON-RPC 2.0 server",
+  "ABSTRACT" => "create JSON-RPC 2.0 application",
   "AUTHOR" => "Shoichi Kaji <skaji\@cpan.org>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
