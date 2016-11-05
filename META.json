@@ -1,0 +1,63 @@
+{
+   "abstract" : "create JSON-RPC 2.0 server",
+   "author" : [
+      "Shoichi Kaji <skaji@cpan.org>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Milla version v1.0.16, Dist::Zilla version 6.008, CPAN::Meta::Converter version 2.150010",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : 2
+   },
+   "name" : "JSON-RPC-Lite",
+   "no_index" : {
+      "directory" : [
+         "eg",
+         "examples",
+         "inc",
+         "share",
+         "t",
+         "xt"
+      ]
+   },
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Dist::Milla" : "v1.0.16",
+            "Test::Pod" : "1.41"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "JSON" : "0",
+            "Plack" : "0",
+            "Router::Boom" : "0",
+            "perl" : "5.008005"
+         }
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/skaji/JSON-RPC-Lite/issues"
+      },
+      "homepage" : "https://github.com/skaji/JSON-RPC-Lite",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/skaji/JSON-RPC-Lite.git",
+         "web" : "https://github.com/skaji/JSON-RPC-Lite"
+      }
+   },
+   "version" : "0.001",
+   "x_serialization_backend" : "Cpanel::JSON::XS version 3.0222",
+   "x_static_install" : "1"
+}
+
