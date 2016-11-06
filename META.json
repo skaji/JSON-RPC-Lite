@@ -41,6 +41,7 @@
             "JSON" : "0",
             "Plack" : "0",
             "Router::Boom" : "0",
+            "parent" : "0",
             "perl" : "5.008005"
          }
       }

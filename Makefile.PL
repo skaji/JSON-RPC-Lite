@@ -19,7 +19,8 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "JSON" => 0,
     "Plack" => 0,
-    "Router::Boom" => 0
+    "Router::Boom" => 0,
+    "parent" => 0
   },
   "VERSION" => "0.001",
   "test" => {
@@ -31,7 +32,8 @@ my %WriteMakefileArgs = (
 my %FallbackPrereqs = (
   "JSON" => 0,
   "Plack" => 0,
-  "Router::Boom" => 0
+  "Router::Boom" => 0,
+  "parent" => 0
 );
 
 

@@ -23,7 +23,7 @@ our $VERSION = '0.001';
                 $self->{_jsonrpc_body}{$name} = shift;
                 return $self;
             } else {
-                $self->{_jsonrpc_body}{$name};
+                return $self->{_jsonrpc_body}{$name};
             }
         };
     }
@@ -54,8 +54,10 @@ our $VERSION = '0.001';
 
         my $body = $self->{req}->raw_body;
         my $decoded = eval { $self->{json}->decode($body) };
-        if (!$@ and $decoded) {
-            $self->{_jsonrpc_body} = $decoded;
+        if (!$@ and ref $decoded eq 'HASH') {
+            return $self->{_jsonrpc_body} = $decoded;
+        } else {
+            return {};
         }
     }
 
@@ -64,9 +66,8 @@ our $VERSION = '0.001';
         return (0, 405) if $self->{req}->method ne "POST";
         return (0, 415) if ($self->{req}->content_type || "") !~ m{^application/json\b}i;
         return (0, 200) unless my $jsonrpc_body = $self->_jsonrpc_body;
-        return (0, 200) if ref $jsonrpc_body ne 'HASH';
         if (($jsonrpc_body->{jsonrpc} || 0) eq '2.0'
-            and exists $jsonrpc_body->{method}
+            and defined $jsonrpc_body->{method}
             and exists $jsonrpc_body->{id}
         ) {
             return (1, undef);
