@@ -119,7 +119,6 @@ our $VERSION = '0.001';
 }
 
 use JSON ();
-use Router::Boom;
 
 sub import {
     my $class = shift;
@@ -135,14 +134,13 @@ sub import {
 
 sub new {
     my ($class, %option) = @_;
-    my $router = Router::Boom->new;
     my $json = $option{json} || JSON->new->utf8(1)->canonical(1)->pretty(1);
-    bless { router => $router, json => $json }, $class;
+    bless { router => +{}, json => $json }, $class;
 }
 
 sub add_method {
     my ($self, $name, $sub) = @_;
-    $self->{router}->add("/$name", $sub);
+    $self->{router}{$name} = $sub;
     $self;
 }
 
@@ -157,9 +155,9 @@ sub to_app {
             $res->status(200); # XXX use $status ?
             return $res->finalize;
         }
-        my $method = "/" . $c->method;
-        if (my ($sub, $args) = $self->{router}->match($method)) {
-            my $res = eval { $sub->($c, $args) };
+        my $method = $c->method;
+        if (my $sub = $self->{router}{$method}) {
+            my $res = eval { $sub->($c) };
             my $err = $@;
             if (!$err and $res and eval { $res->isa(JSON::RPC::Lite::Response::) }) {
                 return $res->finalize;
